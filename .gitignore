@@ -1,4 +1,4 @@
-src/gql
+/src/__generated__
 
 localhost-key.pem
 localhost.pem
