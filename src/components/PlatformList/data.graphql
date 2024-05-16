@@ -1,0 +1,16 @@
+query GetAllStructures($input: StructureFilters) {
+  allStructures(input: $input) {
+    id
+    name
+    status
+    coverImagePath
+    deploymentLevel
+    description
+    cardInsights {
+      color
+      name
+      value
+      type
+    }
+  }
+}

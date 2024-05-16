@@ -1,5 +1,12 @@
+import { PlatformList } from "./components/PlatformList";
+
 function App() {
-  return <h1>Fabric Client Vite</h1>;
+  return (
+    <main>
+      <h1>Fabric Client Vite</h1>
+      <PlatformList />
+    </main>
+  );
 }
 
 export default App;
