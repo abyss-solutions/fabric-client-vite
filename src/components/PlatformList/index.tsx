@@ -1,9 +1,14 @@
 import { useGetAllStructuresQuery } from "../../__generated__/hooks";
 export const PlatformList = () => {
-  const { data, error } = useGetAllStructuresQuery({
+  const { data, error, loading } = useGetAllStructuresQuery({
     nextFetchPolicy: "no-cache",
   });
   const list = data?.allStructures;
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <div>
       <h1>Platform List</h1>
