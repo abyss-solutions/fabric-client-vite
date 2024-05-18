@@ -9,7 +9,7 @@ const LoginButton = () => {
     if (isLoggedIn)
       logout({
         openUrl: async () => {
-          window.location.pathname = "/";
+          window.location.href = "/";
         },
       });
     else loginWithRedirect();
