@@ -6,7 +6,11 @@ import { BugReport, ChromeReaderMode } from "@mui/icons-material";
 import { NavbarLinks, selectMenuStyles } from "./styles";
 import { REPORT_A_BUG, USAGE_GUIDE } from "@/constants";
 import { useFeatureFlag, useRouter } from "@/hooks";
-import { iconStyles, InfoMenuItem, Navbar } from "@/components/shared/Navbar/Navbar";
+import {
+  iconStyles,
+  InfoMenuItem,
+  Navbar,
+} from "@/components/shared/Navbar/Navbar";
 
 const AnalysisPages = () => {
   const inspection = window.location.pathname.split("/")[2];
@@ -64,7 +68,7 @@ const AnalysisPages = () => {
             onClick={() => handlePageClick(page.route)}
             sx={NavbarLinks}
             style={{
-              borderColor: router.route.includes(page.route)
+              borderColor: router.routes.includes(page.route)
                 ? "#fff"
                 : "transparent",
             }}
