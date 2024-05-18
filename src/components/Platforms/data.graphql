@@ -1,0 +1,59 @@
+query GetAllStructuresForListing($input: StructureFilters) {
+  allStructures(input: $input) {
+    id
+    name
+    status
+    coverImagePath
+    deploymentLevel
+    description
+    octreeResourcesPath
+    cardInsights {
+      color
+      name
+      value
+      type
+    }
+  }
+}
+
+query AllRegionsForListing {
+  allRegions {
+    id
+    name
+  }
+}
+
+query AllStructuresByRegionForListing {
+  allStructuresByRegion {
+    id
+    name
+    structures {
+      id
+      name
+      status
+      defectArea {
+        key
+        area
+      }
+    }
+    defectArea {
+      key
+      area
+    }
+  }
+  allDefects {
+    key
+    name
+  }
+}
+
+query StructureDecksWithDefectsForListing($structureId: ID) {
+  decksWithDefects(structureId: $structureId) {
+    id
+    name
+    defectArea {
+      key
+      area
+    }
+  }
+}

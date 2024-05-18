@@ -1,4 +1,4 @@
-import LoginButton from "@/components/LoginButton";
+import { Platforms } from "@/components/Platforms";
 import { PageLoader } from "@/components/shared/PageLoader";
 import { useFetchCookies } from "@/hooks";
 import { DefaultLayout } from "@/layouts/DefaultLayout";
@@ -17,8 +17,7 @@ export const HomePage = () => {
 
   return (
     <DefaultLayout>
-      <h1>Fabric Client Vite</h1>
-      <LoginButton />
+      <Platforms />
     </DefaultLayout>
   );
 };

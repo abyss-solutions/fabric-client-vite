@@ -1,6 +1,0 @@
-query GetAllStructures($input: StructureFilters) {
-  allStructures(input: $input) {
-    id
-    name
-  }
-}

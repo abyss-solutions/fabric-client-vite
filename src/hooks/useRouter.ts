@@ -1,20 +1,29 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 export const useRouter = () => {
-  const query = window.location.href;
-  const pageId = query.split("/");
   const pathname = window.location.href;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setSearchParams] = useSearchParams();
 
   const location = useLocation();
 
-  const push = useNavigate();
+  const navigate = useNavigate();
+
+  const push = ({
+    pathname,
+    query,
+  }: {
+    pathname: string;
+    query?: Record<string, string>;
+  }) => {
+    setSearchParams(query);
+    navigate(pathname);
+  };
 
   // equivlant to Next.js useRouter hook's route property
   const routes = location.pathname.split("/");
 
   return {
-    query,
-    pageId,
     pathname,
     push,
     routes,
