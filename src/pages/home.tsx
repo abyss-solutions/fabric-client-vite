@@ -1,17 +1,24 @@
 import LoginButton from "@/components/LoginButton";
-import { AnalysisNavbar } from "@/components/shared/AnalysisNavbar";
-import { useLocation } from "react-router-dom";
+import { PageLoader } from "@/components/shared/PageLoader";
+import { useFetchCookies } from "@/hooks";
+import { DefaultLayout } from "@/layouts/DefaultLayout";
+import { Box } from "@mui/material";
 
 export const HomePage = () => {
-  const location = useLocation();
+  const cookiesFetched = useFetchCookies();
+
+  if (!cookiesFetched) {
+    return (
+      <Box sx={{ position: "relative", top: "25rem" }}>
+        <PageLoader />
+      </Box>
+    );
+  }
+
   return (
-    <>
-      <AnalysisNavbar />
-      <main>
-        <h1>Fabric Client Vite</h1>
-        <LoginButton />
-      </main>
-      <pre>{JSON.stringify(location, null, 2)}</pre>
-    </>
+    <DefaultLayout>
+      <h1>Fabric Client Vite</h1>
+      <LoginButton />
+    </DefaultLayout>
   );
 };

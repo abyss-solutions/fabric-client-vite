@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 
 const LoginButton = () => {
-  const { loginWithRedirect, user, logout } = useAuth0();
+  const { loginWithRedirect, user, logout, isLoading } = useAuth0();
 
   const isLoggedIn = !!user;
 
@@ -14,6 +14,10 @@ const LoginButton = () => {
       });
     else loginWithRedirect();
   };
+
+  if (isLoading) {
+    return <button disabled>Loading...</button>;
+  }
 
   return (
     <button type="button" onClick={logInOrOut}>
