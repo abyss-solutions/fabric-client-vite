@@ -355,7 +355,7 @@ export const Platforms = () => {
           <Box flex={1} sx={{ width: "100%" }}>
             <Autocomplete
               options={[...new Set(allPlatforms.map((item) => item.name))]}
-              onInputChange={(event, newValue) =>
+              onInputChange={(_, newValue) =>
                 handleSearchPlatform(newValue || "")
               }
               freeSolo

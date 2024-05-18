@@ -16,7 +16,7 @@ const GoToLogin = () => {
   return <></>;
 };
 export const AuthGuard = ({ children }: PropsWithChildren<object>) => {
-  const { error, isLoading, getIdTokenClaims, getAccessTokenSilently } =
+  const { error, isLoading, getAccessTokenSilently } =
     useAuth0();
   const [authCompleted, setAuthCompleted] = useState<boolean>(false);
   const [auth0TokenState, setAuth0TokenState] = useRecoilState(
@@ -39,7 +39,12 @@ export const AuthGuard = ({ children }: PropsWithChildren<object>) => {
         setAuthCompleted(true);
       }
     });
-  }, [isLoading, setAuth0TokenState, getIdTokenClaims, auth0TokenState]);
+  }, [
+    isLoading,
+    setAuth0TokenState,
+    auth0TokenState,
+    getAccessTokenSilently,
+  ]);
 
   if (isLoading || !authCompleted) {
     return (

@@ -6,7 +6,6 @@ import {
   SxProps,
   CircularProgress,
 } from '@mui/material';
-import React from 'react';
 import { CardInsightTypeEnum } from '@/types';
 
 type CorrodedAreaType = {
@@ -14,7 +13,7 @@ type CorrodedAreaType = {
   label?: string;
   color?: string;
   sx?: SxProps;
-  type?: String;
+  type?: string;
 };
 
 export const LinearProgress = ({

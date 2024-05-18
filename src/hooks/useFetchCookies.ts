@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 
 export const useFetchCookies = () => {
   const [cookiesFetched, setCookiesFetched] = useState(false);
-  const { getIdTokenClaims } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
-    getIdTokenClaims()
+    getAccessTokenSilently()
       .then(() => {
         setCookiesFetched(true);
       })
       .catch((error) => {
         console.error("useFetchCookies ->", error);
       });
-  }, [getIdTokenClaims]);
+  }, [getAccessTokenSilently]);
 
   return cookiesFetched;
 };
