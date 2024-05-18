@@ -377,7 +377,6 @@ export const Platforms = () => {
                   variant="outlined"
                   InputProps={{
                     ...parameters.InputProps,
-                    disableUnderline: true,
                     startAdornment: (
                       <InputAdornment
                         position="start"

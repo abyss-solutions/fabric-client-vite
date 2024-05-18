@@ -6,7 +6,6 @@ query GetAllStructuresForListing($input: StructureFilters) {
     coverImagePath
     deploymentLevel
     description
-    octreeResourcesPath
     cardInsights {
       color
       name

@@ -12,6 +12,6 @@ export const getCloudfrontUrl = (filepath: string) => {
       "cloudfront.ts -> getCloudfrontUrl() -> filePath ->",
       filepath
     );
-    return `${process.env.CDN_BASE_URL}/${relativePathEncoded}`;
+    return `${import.meta.env.VITE_APP_CDN_BASE_URL}/${relativePathEncoded}`;
   }
 };

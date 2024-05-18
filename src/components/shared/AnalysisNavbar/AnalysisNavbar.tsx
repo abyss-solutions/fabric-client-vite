@@ -11,6 +11,7 @@ import {
   InfoMenuItem,
   Navbar,
 } from "@/components/shared/Navbar/Navbar";
+import LoginButton from "@/components/LoginButton";
 
 const AnalysisPages = () => {
   const inspection = window.location.pathname.split("/")[2];
@@ -97,6 +98,7 @@ const leftNav = (_inspectionId: string) => {
             cursor: "pointer",
           }}
         />
+        <LoginButton />
       </Link>
       <Box sx={selectMenuStyles}>Lucius</Box>
     </Stack>
@@ -159,6 +161,7 @@ const RightNav = () => {
           ))}
         </MenuList>
       </Menu>
+      <LoginButton />
     </Stack>
   );
 };

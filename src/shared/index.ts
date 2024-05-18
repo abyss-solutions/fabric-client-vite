@@ -1,2 +1,2 @@
-export * from "./ApolloClient";
+export * from "./ConfiguredApolloProvider";
 export * from "./router";

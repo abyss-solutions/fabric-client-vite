@@ -9,7 +9,8 @@ const LoginButton = () => {
     if (isLoggedIn)
       logout({
         openUrl: async () => {
-          window.location.href = "/";
+          // PUSH '/' to the router
+          window.history.pushState({}, "", "/");
         },
       });
     else loginWithRedirect();

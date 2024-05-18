@@ -10,3 +10,8 @@ export const selectedStructureId = atom<string | undefined>({
   default: undefined,
   key: "SelectedStructureId",
 });
+
+export const auth0TokenState = atom<string | undefined>({
+  key: "Auth0Token",
+  default: undefined,
+});

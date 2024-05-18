@@ -14,9 +14,10 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import React, { useState, useMemo } from "react";
 import { BugReport, ChromeReaderMode } from "@mui/icons-material";
 import { Logo } from "./styles";
-import { useFeatureFlag, useRouter } from "@/hooks/index";
+import { useFeatureFlag } from "@/hooks/index";
 import { REPORT_A_BUG, TAGGING_GUIDE, USAGE_GUIDE } from "@/constants";
 import { primary } from "@/theme/colors";
+import LoginButton from "@/components/LoginButton";
 
 type Props = {
   left?: React.ReactNode;
@@ -71,11 +72,11 @@ const DefaultLeft: React.ReactNode = (
     <Link href="/">
       <Logo src="/assets/abyss_fabric_logo_white.png" alt="Abyss Fabric" />
     </Link>
+    <LoginButton />
   </Stack>
 );
 
 export const DefaultRight = () => {
-  const router = useRouter();
   const [anchorElement, setAnchorElement] = useState<undefined | HTMLElement>(
     undefined
   );
@@ -88,11 +89,9 @@ export const DefaultRight = () => {
   };
 
   const isTaggingDeployment = useMemo(() => {
-    return (
-      !router.pathname.includes("analysis") &&
-      router.pathname.includes("inspection")
-    );
-  }, [router.pathname]);
+    const pathname = window.location.pathname.split("/");
+    return pathname.includes("analysis") && pathname.includes("inspection");
+  }, []);
 
   const isAitEngineer = useFeatureFlag("ait-engineer");
 
@@ -145,6 +144,7 @@ export const DefaultRight = () => {
             />
           ))}
         </MenuList>
+        <LoginButton />
       </Menu>
     </Stack>
   );
