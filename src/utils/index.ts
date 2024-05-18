@@ -1,6 +1,6 @@
 export const detectOs = () => {
   const os = ["Win", "Mac", "Linux"];
-  return os.find((v) => global.window?.navigator.platform.indexOf(v) >= 0);
+  return os.find((v) => window?.navigator.platform.indexOf(v) >= 0);
 };
 
 export const getScale = () => {
