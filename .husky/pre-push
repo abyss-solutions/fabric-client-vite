@@ -1,3 +1,4 @@
 yarn lint
 yarn codegen
 yarn type-check
+yarn build
