@@ -1,0 +1,3 @@
+yarn codegen
+yarn lint
+yarn type-check
