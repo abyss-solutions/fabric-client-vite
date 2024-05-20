@@ -1,7 +1,13 @@
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 
 export const useRouter = () => {
   const pathname = window.location.href;
+  const query = useParams();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setSearchParams] = useSearchParams();
 
@@ -27,5 +33,6 @@ export const useRouter = () => {
     pathname,
     push,
     routes,
+    query,
   };
 };
