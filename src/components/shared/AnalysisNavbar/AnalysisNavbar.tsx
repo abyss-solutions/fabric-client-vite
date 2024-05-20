@@ -1,4 +1,3 @@
-import Link from "@mui/material/Link";
 import { Box, Button, Menu, MenuList, Stack } from "@mui/material";
 import { useMemo, useState } from "react";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
@@ -12,6 +11,7 @@ import {
   Navbar,
 } from "@/components/shared/Navbar/Navbar";
 import LoginButton from "@/components/LoginButton";
+import { Link } from "react-router-dom";
 
 const AnalysisPages = () => {
   const inspection = window.location.pathname.split("/")[2];
@@ -89,7 +89,7 @@ const leftNav = (_inspectionId: string) => {
       spacing={2}
       sx={{ display: "flex", alignItems: "center" }}
     >
-      <Link href="/">
+      <Link to="/">
         <img
           src="/assets/abyss_fabric_logo_white.png"
           alt="Abyss Fabric"
