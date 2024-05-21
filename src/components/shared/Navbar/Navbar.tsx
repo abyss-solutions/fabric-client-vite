@@ -2,6 +2,7 @@ import {
   AppBar,
   Button,
   Grid,
+  Link,
   Menu,
   MenuItem,
   MenuList,
@@ -17,7 +18,6 @@ import { useFeatureFlag } from "@/hooks/index";
 import { REPORT_A_BUG, TAGGING_GUIDE, USAGE_GUIDE } from "@/constants";
 import { primary } from "@/theme/colors";
 import LoginButton from "@/components/LoginButton";
-import { Link } from "react-router-dom";
 
 type Props = {
   left?: React.ReactNode;
@@ -50,7 +50,7 @@ export const InfoMenuItem = ({
   return (
     <MenuItem onClick={handleClose} sx={menuItemStyles}>
       <Link
-        to={url}
+        href={url}
         color="inherit"
         target="_blank"
         style={{
@@ -73,7 +73,7 @@ const DefaultLeft: React.ReactNode = (
     spacing={2}
     sx={{ display: "flex", alignItems: "center" }}
   >
-    <Link to="/">
+    <Link href="/">
       <Logo src="/assets/abyss_fabric_logo_white.png" alt="Abyss Fabric" />
     </Link>
     <LoginButton />
