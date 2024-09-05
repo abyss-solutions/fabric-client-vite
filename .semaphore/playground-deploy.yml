@@ -21,7 +21,7 @@ blocks:
         - name: build playground prod bundle
           commands:
             - '[ ! -d ~/public ] || mv ~/public ./public' # move public directory from home if exists
-            - mv ~/env ./env
+            - mv ~/.env ./.env
             - echo "VUE_APP_BUILD_VERSION=$SEMAPHORE_GIT_SHA" >> ./.env.local
             - yarn build
             - cache store dist-"$SEMAPHORE_PIPELINE_ID" dist
