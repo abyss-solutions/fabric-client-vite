@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predev": "npx codegen",
+    "predev": "yarn codegen",
     "dev": "vite",
     "prebuild": "yarn codegen",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "codegen": "graphql-codegen --config codegen.yml",
+    "codegen": "npx graphql-codegen --yes --config codegen.yml",
     "prepare": "husky",
     "type-check": "tsc --noEmit",
     "test": "vitest"
