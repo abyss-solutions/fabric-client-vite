@@ -20,7 +20,7 @@ blocks:
           - cache restore node_modules-$(checksum yarn.lock)
           - cache restore release-version-$SEMAPHORE_WORKFLOW_ID
           - cache restore next-$(checksum yarn.lock)
-          - mv ~/.env ./.env
+          - mv ~/.env.vite ./.env.vite
           - nvm install && nvm use
       jobs:
         - name: build playground prod bundle
