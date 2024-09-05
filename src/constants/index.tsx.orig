@@ -1,3 +1,4 @@
+import { PointOfInterestsTypeEnum } from "@/__generated__/hooks";
 import { FeatureFlags } from "@/types";
 
 const CUBE_PADDING_Y = 350;

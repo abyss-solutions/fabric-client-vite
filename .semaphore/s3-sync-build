@@ -1,0 +1,25 @@
+#!/bin/bash
+# .semaphore/s3-sync-build
+
+SCRIPT=$(readlink -f "$0")
+# Absolute path this script is in, thus /home/user/bin
+SCRIPTPATH=$(dirname "$SCRIPT")
+
+bucket=$S3_BUCKET
+
+if [[ -z "$bucket" ]]; then
+  "Environment Variable missing: S3_BUCKET"
+  exit 1
+fi
+
+if [[ ! -d "$SCRIPTPATH/../dist" ]]; then
+  echo "dist directory missing!"
+  exit 1
+fi
+
+# aws cloudfront list-distributions
+(
+  cd $SCRIPTPATH/../dist
+  set -x
+  aws s3 sync --cache-control max-age=300 . "s3://$bucket"
+)

@@ -1,0 +1,45 @@
+version: v1.0
+name: Playground - build & deploy
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Build webpack bundle
+    # skip:
+    #   when: "branch != 'master'"
+    task:
+      secrets:
+        - name: playground-client-build
+      prologue:
+        commands:
+          - checkout
+          - nvm install && nvm use
+          - cache restore node_modules-$(checksum yarn.lock)
+          - cache restore build-cache-"$SEMAPHORE_WORKFLOW_ID"
+      jobs:
+        - name: build playground prod bundle
+          commands:
+            - '[ ! -d ~/public ] || mv ~/public ./public' # move public directory from home if exists
+            - mv ~/env ./env
+            - echo "VUE_APP_BUILD_VERSION=$SEMAPHORE_GIT_SHA" >> ./.env.local
+            - yarn build
+            - cache store dist-"$SEMAPHORE_PIPELINE_ID" dist
+  - name: Deploy
+    # skip:
+    #   when: "branch != 'master'"
+    task:
+      env_vars:
+        - name: AWS_DEFAULT_REGION
+          value: ap-southeast-2
+      secrets:
+        - name: aws-s3-sync-secrets
+        - name: playground-client-deploy
+      prologue:
+        commands:
+          - checkout
+      jobs:
+        - name: Update Tag and Push Docker Image
+          commands:
+            - cache restore dist-"$SEMAPHORE_PIPELINE_ID"
+            - .semaphore/s3-sync-build
