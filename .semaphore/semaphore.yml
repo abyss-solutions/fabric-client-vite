@@ -1,4 +1,3 @@
-# .semaphore/semaphore.yml
 version: v1.0
 agent:
   machine:
@@ -14,10 +13,9 @@ auto_cancel:
     when: branch != 'main'
 blocks:
   - name: Install dependencies
-    dependencies: []
     task:
       secrets:
-        - name: gemfury-deploy-token
+          - name: playground-client-build
       prologue:
         commands:
           - checkout
