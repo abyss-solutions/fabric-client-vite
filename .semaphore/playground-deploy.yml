@@ -26,7 +26,6 @@ blocks:
         - name: build playground prod bundle
           commands:
             - '[ ! -d ~/public ] || mv ~/public ./public' # move public directory from home if exists
-            - mv ~/.env.vite ./.env.vite
             - yarn --frozen-lockfile
             - echo "VUE_APP_BUILD_VERSION=$SEMAPHORE_GIT_SHA" >> ./.env.local
             - yarn build
