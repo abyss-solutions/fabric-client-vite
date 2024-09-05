@@ -20,7 +20,18 @@ blocks:
         commands:
           - checkout
           - nvm install && nvm use
-          - dev
+          
+      jobs:
+        - name: yarn install and cache
+          commands:
+            - dev
+            - cache restore node_modules-$(checksum yarn.lock),node_modules-$SEMAPHORE_GIT_BRANCH,node_modules-main
+            - cache restore yarn-$(checksum yarn.lock),yarn-$SEMAPHORE_GIT_BRANCH,yarn-main
+            - yarn --frozen-lockfile
+            - cache store node_modules-$SEMAPHORE_GIT_BRANCH node_modules
+            - cache store node_modules-$(checksum yarn.lock) node_modules
+            - cache store yarn-$(checksum yarn.lock) ~/.cache/yarn
+            - cache store yarn-$SEMAPHORE_GIT_BRANCH ~/.cache/yarn
 
 promotions:
   - name: Deploy - playground (playground.abyssfabric.co)
