@@ -24,6 +24,8 @@ blocks:
       jobs:
         - name: yarn install and cache
           commands:
+            - checkout
+            - nvm install && nvm use
             - yarn dev
             - cache restore node_modules-$(checksum yarn.lock),node_modules-$SEMAPHORE_GIT_BRANCH,node_modules-main
             - cache restore yarn-$(checksum yarn.lock),yarn-$SEMAPHORE_GIT_BRANCH,yarn-main
