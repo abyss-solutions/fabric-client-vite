@@ -14,14 +14,19 @@ blocks:
       prologue:
         commands:
           - checkout
-          - nvm install && nvm use
           - cache restore node_modules-$(checksum yarn.lock)
           - cache restore build-cache-"$SEMAPHORE_WORKFLOW_ID"
+          - checkout
+          - cache restore node_modules-$(checksum yarn.lock)
+          - cache restore release-version-$SEMAPHORE_WORKFLOW_ID
+          - cache restore next-$(checksum yarn.lock)
+          - mv ~/.env ./.env
+          - nvm install && nvm use
       jobs:
         - name: build playground prod bundle
           commands:
             - '[ ! -d ~/public ] || mv ~/public ./public' # move public directory from home if exists
-            - mv ~/.env ./.env
+            #- mv ~/.env ./.env
             - echo "VUE_APP_BUILD_VERSION=$SEMAPHORE_GIT_SHA" >> ./.env.local
             - yarn build
             - cache store dist-"$SEMAPHORE_PIPELINE_ID" dist
