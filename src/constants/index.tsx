@@ -16,11 +16,11 @@ export const DRAWER_EXPANDED_CUBE_POSITION: [number, number, number] = [
 ];
 
 export const POI_STATS_BAR_COLORS = {
-  [PointOfInterestsTypeEnum.Blister]: "#66BB6A",
-  [PointOfInterestsTypeEnum.Cups]: "#0288D1",
-  [PointOfInterestsTypeEnum.Hotbolting]: "#B986F9",
-  [PointOfInterestsTypeEnum.Other]: "#FFC107",
-  [PointOfInterestsTypeEnum.PaintDamage]: "#8137A6",
+  'Blister': "#66BB6A",
+  'Cups': "#0288D1",
+  'Hotbolting': "#B986F9",
+  'Other': "#FFC107",
+  'PaintDamage': "#8137A6",
 };
 
 export const FALLBACK_INSPECTION_IMAGE = "/assets/oil-rig-silhouette.jpg";
