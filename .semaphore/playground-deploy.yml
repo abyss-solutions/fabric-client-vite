@@ -28,7 +28,7 @@ blocks:
             - yarn --frozen-lockfile
             - echo "VUE_APP_BUILD_VERSION=$SEMAPHORE_GIT_SHA" >> ./.env.local
             - source .env.local
-            - VITE_APP_API_URL=$VITE_APP_API_URL VITE_APP_AUTH0_DOMAIN=$VITE_APP_AUTH0_DOMAIN yarn build
+            - VITE_APP_API_URL=$VITE_APP_API_URL yarn build
             - cache store dist-"$SEMAPHORE_PIPELINE_ID" dist
   - name: Deploy
     # skip:
